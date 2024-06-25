@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://8ypkr88tl5ce"]
+
+[ext_resource type="Script" path="res://jugador.gd" id="1_pnaxy"]
+[ext_resource type="Texture2D" uid="uid://gcclg35iaorh" path="res://uwu.png" id="2_ghi3d"]
+[ext_resource type="Texture2D" uid="uid://bytymf6y8rsn" path="res://barra de vida del jugador2.png" id="3_pxjho"]
+[ext_resource type="Texture2D" uid="uid://c4mvh62y8if3s" path="res://barra de vida del jugador3.png" id="4_2ry3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gmyl"]
+size = Vector2(80, 208)
+
+[sub_resource type="Animation" id="Animation_xhxo3"]
+resource_name = "Animaciones"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.453786, -0.25, 0, 0.25, 0, -0.453786, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ux6ab"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2iug1"]
+_data = {
+"Animaciones": SubResource("Animation_xhxo3"),
+"RESET": SubResource("Animation_ux6ab")
+}
+
+[node name="jugador" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_pnaxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ghi3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 24)
+shape = SubResource("RectangleShape2D_3gmyl")
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2iug1")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-654, -360)
+anchor_mode = 0
+
+[node name="barra" type="TextureProgressBar" parent="."]
+offset_left = -189.0
+offset_top = -166.0
+offset_right = -141.0
+offset_bottom = -150.0
+scale = Vector2(7.91818, 6.86531)
+max_value = 5.0
+texture_over = ExtResource("3_pxjho")
+texture_progress = ExtResource("4_2ry3c")

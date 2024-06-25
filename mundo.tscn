@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://con5ptimh8nn"]
+
+[ext_resource type="Texture2D" uid="uid://bxc8qo0qybycq" path="res://MUNDO.png" id="1_yly11"]
+[ext_resource type="PackedScene" uid="uid://8ypkr88tl5ce" path="res://jugador.tscn" id="2_14lvh"]
+[ext_resource type="PackedScene" uid="uid://cqqlb58i3ekf1" path="res://arbol.tscn" id="3_d5eps"]
+[ext_resource type="PackedScene" uid="uid://cqyuh7t8qu5k1" path="res://zombie.tscn" id="4_wagps"]
+
+[node name="MUNDO" type="Node2D"]
+y_sort_enabled = true
+
+[node name="SUELO" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(37, -19)
+scale = Vector2(9.27891, 9.27891)
+texture = ExtResource("1_yly11")
+
+[node name="jugador" parent="." instance=ExtResource("2_14lvh")]
+position = Vector2(63, 155)
+
+[node name="ARBOL" parent="." instance=ExtResource("3_d5eps")]
+position = Vector2(-573, 42)
+
+[node name="ARBOL2" parent="." instance=ExtResource("3_d5eps")]
+position = Vector2(383, 441)
+
+[node name="ARBOL3" parent="." instance=ExtResource("3_d5eps")]
+position = Vector2(396, -291)
+
+[node name="ARBOL4" parent="." instance=ExtResource("3_d5eps")]
+position = Vector2(-247, -622)
+
+[node name="ARBOL5" parent="." instance=ExtResource("3_d5eps")]
+position = Vector2(-311, 473)
+
+[node name="ARBOL6" parent="." instance=ExtResource("3_d5eps")]
+position = Vector2(-12, -51)
+
+[node name="zombie" parent="." instance=ExtResource("4_wagps")]
+position = Vector2(-327, -108)

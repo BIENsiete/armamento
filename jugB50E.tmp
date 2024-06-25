@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://8ypkr88tl5ce"]
+
+[ext_resource type="Script" path="res://jugador.gd" id="1_pnaxy"]
+[ext_resource type="Texture2D" uid="uid://gcclg35iaorh" path="res://uwu.png" id="2_ghi3d"]
+[ext_resource type="Texture2D" uid="uid://bsmkuhciyrvrd" path="res://barra de vida del jugador.png" id="3_tny3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gmyl"]
+size = Vector2(80, 208)
+
+[sub_resource type="Animation" id="Animation_ux6ab"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_xhxo3"]
+resource_name = "Animaciones"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.453786, -0.25, 0, 0.25, 0, -0.453786, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2iug1"]
+_data = {
+"Animaciones": SubResource("Animation_xhxo3"),
+"RESET": SubResource("Animation_ux6ab")
+}
+
+[node name="jugador" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_pnaxy")
+salud = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ghi3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 24)
+shape = SubResource("RectangleShape2D_3gmyl")
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2iug1")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-654, -360)
+anchor_mode = 0
+
+[node name="barra" type="TextureProgressBar" parent="."]
+offset_left = -145.0
+offset_top = -124.0
+offset_right = 86.0
+offset_bottom = -99.0
+scale = Vector2(1.26598, 1.09764)
+
+[node name="BarraDeVidaDelJugador" type="Sprite2D" parent="."]
+position = Vector2(1, -110)
+scale = Vector2(6.625, 6.625)
+texture = ExtResource("3_tny3l")

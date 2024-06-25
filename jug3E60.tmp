@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://8ypkr88tl5ce"]
+
+[ext_resource type="Script" path="res://jugador.gd" id="1_pnaxy"]
+[ext_resource type="Texture2D" uid="uid://gcclg35iaorh" path="res://uwu.png" id="2_ghi3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gmyl"]
+size = Vector2(80, 208)
+
+[sub_resource type="Animation" id="Animation_xhxo3"]
+resource_name = "animaciones"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2iug1"]
+_data = {
+"animaciones": SubResource("Animation_xhxo3")
+}
+
+[node name="jugador" type="CharacterBody2D"]
+script = ExtResource("1_pnaxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ghi3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 24)
+shape = SubResource("RectangleShape2D_3gmyl")
+
+[node name="animaciones" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2iug1")
+}

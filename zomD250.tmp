@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqyuh7t8qu5k1"]
+
+[ext_resource type="Texture2D" uid="uid://dnw8a2aq0q4fp" path="res://uwu zombie.png" id="1_5t0vv"]
+[ext_resource type="Script" path="res://zombie.gd" id="1_emo3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxeu"]
+size = Vector2(79, 207)
+
+[node name="zombie" type="CharacterBody2D"]
+script = ExtResource("1_emo3a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5t0vv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.5, 23.5)
+shape = SubResource("RectangleShape2D_ytxeu")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqyuh7t8qu5k1"]
+
+[ext_resource type="Texture2D" uid="uid://yrbgq1d2cgwb" path="res://uwu zombie.png" id="1_5t0vv"]
+[ext_resource type="Script" path="res://zombie.gd" id="1_emo3a"]
+
+[sub_resource type="Animation" id="Animation_6wc1i"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_uavkm"]
+resource_name = "yumba"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.211185, -0.25, 0, 0.25, 0, -0.211185, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w42op"]
+_data = {
+"RESET": SubResource("Animation_6wc1i"),
+"yumba": SubResource("Animation_uavkm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxeu"]
+size = Vector2(79, 207)
+
+[node name="zombie" type="CharacterBody2D"]
+script = ExtResource("1_emo3a")
+
+[node name="yumba" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w42op")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.994136, 1)
+texture = ExtResource("1_5t0vv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.5, 23.5)
+shape = SubResource("RectangleShape2D_ytxeu")
